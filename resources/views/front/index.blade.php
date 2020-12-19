@@ -25,24 +25,28 @@
 </section>
 <!-- news card section starts from here -->
 
-            <!-- Last Donates Start -->
+            <!-- Last 5 Donates Start -->
             <div class="review">
                 <div class="container-fluid">
                     <h1>Last Donations</h1>
                     <div class="row align-items-center review-slider normal-slider">
-                        @foreach ($users as $user)
+                        @foreach ($donations[0] as $donate)
 
                         <div class="col-md-6">
                             <div class="review-slider-item">
                                 <div class="review-img">
-                                    <img src="{{$user->image_url}}" width="100" height="100" alt="Image">
+                                    <img src="{{asset('uploads/money.png')}}" width="100" alt="Image">
+                                </div>
+                                <div class="review-img">
+                                    <h4 style="color:rgb(113, 111, 243)">Amount</h4>
+                                    <h1 style="color:rgb(0, 255, 179)">{{$donate->amount}}</h1>
                                 </div>
                                 <div class="review-text">
-                                    <h2>{{$user->name}}</h2>
-                                    <h3>{{$user->email}}</h3>
-                                    <p>
-                                        {{$user->description}}
-                                    </p>
+                                    <h3><b>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{$donate->comment}}</h3>
+                                    <h3><b>From:&nbsp;&nbsp;</b>{{$donate->comment}} <br></h3>
+                                    <h3><b>Comment:</b></h3>
+                                    <h3>{{$donate->comment}}</h3>
+
                                 </div>
                             </div>
                         </div>
@@ -50,27 +54,32 @@
                     </div>
                 </div>
             </div>
-            <!-- Last Donates End -->
+            <!-- Last 5 Donates End -->
   <!-- Top Donates Start -->
   <div class="review">
     <div class="container-fluid">
         <h1>Top Donations</h1>
         <div class="row align-items-center review-slider normal-slider">
-            @foreach ($users as $user)
+            @foreach ($donations[1] as $donate)
             <div class="col-md-6">
                 <div class="review-slider-item">
                     <div class="review-img">
-                        <img src="{{$user->image_url}}" width="100" height="100" alt="Image">
+                        <img src="{{asset('uploads/money.png')}}" width="100" alt="Image">
+                    </div>
+                    <div class="review-img">
+                        <h4 style="color:rgb(113, 111, 243)">Amount</h4>
+                        <h1 style="color:rgb(0, 255, 179)">{{$donate->amount}}</h1>
                     </div>
                     <div class="review-text">
-                        <h2>{{$user->name}}</h2>
-                        <h3>{{$user->email}}</h3>
-                        <p>
-                            {{$user->description}}
-                        </p>
+                        <h3><b>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{$donate->comment}}</h3>
+                        <h3><b>From:&nbsp;&nbsp;</b>{{$donate->comment}} <br></h3>
+                        <h3><b>Comment:</b></h3>
+                        <h3>{{$donate->comment}}</h3>
+
                     </div>
                 </div>
             </div>
+
             @endforeach
         </div>
     </div>
