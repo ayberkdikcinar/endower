@@ -10,7 +10,7 @@ class SocialLinkController extends Controller
 {
     public function create(Request $request){
 
-        $user=User::find(5);
+        $user=Auth::user();
 
         $request->validate([
             'name'=>'min:3|max:100',

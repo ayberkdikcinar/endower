@@ -30,7 +30,7 @@ Route::get('/register','AuthController@indexReg')->name('registerpage');
 Route::post('/register-now','AuthController@registerPost')->name('register');
 
 // Routes that require user authentication
-// Route::group(['middleware' => 'checkUser'], function () {
+Route::group(['middleware' => 'checkUser'], function () {
   
   // Posts
   Route::post('/profile/posts','PostController@create');
@@ -38,5 +38,5 @@ Route::post('/register-now','AuthController@registerPost')->name('register');
   // Social Links
   Route::post('/profile/social-link','SocialLink@create');
 
-// });
+});
 
