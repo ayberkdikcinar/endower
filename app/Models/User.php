@@ -48,19 +48,19 @@ class User extends Authenticatable
     }
 
     public function getProfileSettings(){
-        return $this->hasOne(ProfileSettings::Class);
+        return $this->hasOne(ProfileSettings::class);
     }
 
     public function getAnalytics(){
-        return $this->hasOne(UserAnalytics::Class);
+        return $this->hasOne(UserAnalytics::class);
     }
 
     public function getSocialLinks(){
-        return $this->hasMany(SocialLink::Class);
+        return $this->hasMany(SocialLink::class);
     }
 
     public function getDonations(){
-        return $this->hasMany(Donation::Class);
+        return $this->hasMany(Donation::class);
     }
 
 

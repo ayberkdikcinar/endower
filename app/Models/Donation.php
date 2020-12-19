@@ -9,10 +9,10 @@ class Donation extends Model
     
 
     public function getUser(){
-        return $this->belongsTo(User::Class);
+        return $this->belongsTo(User::class);
     }
 
     public function getDonator(){
-        return $this->belongsTo(Donator::Class);
+        return $this->belongsTo(Donator::class);
     }
 }
