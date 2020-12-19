@@ -42,8 +42,8 @@
                                     <h1 style="color:rgb(0, 255, 179)">{{$donate->amount}}</h1>
                                 </div>
                                 <div class="review-text">
-                                    <h3><b>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{$donate->comment}}</h3>
-                                    <h3><b>From:&nbsp;&nbsp;</b>{{$donate->comment}} <br></h3>
+                                    <h3><b>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{$donate->user->user_name}}</h3>
+                                    <h3><b>From:&nbsp;&nbsp;</b>{{$donate->donator->name}} <br></h3>
                                     <h3><b>Comment:</b></h3>
                                     <h3>{{$donate->comment}}</h3>
 
@@ -71,8 +71,8 @@
                         <h1 style="color:rgb(0, 255, 179)">{{$donate->amount}}</h1>
                     </div>
                     <div class="review-text">
-                        <h3><b>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{$donate->comment}}</h3>
-                        <h3><b>From:&nbsp;&nbsp;</b>{{$donate->comment}} <br></h3>
+                        <h3><b>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{$donate->user->user_name}}</h3>
+                        <h3><b>From:&nbsp;&nbsp;</b>{{$donate->donator->name}} <br></h3>
                         <h3><b>Comment:</b></h3>
                         <h3>{{$donate->comment}}</h3>
 
