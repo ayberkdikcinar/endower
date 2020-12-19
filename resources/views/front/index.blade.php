@@ -1,6 +1,92 @@
 @extends('front.layouts.master')
 @section('content')
+@section('title','Endower -Homepage')
 
+<!-- news card section starts from here -->
+<section class="details-card">
+    <div class="container">
+        <h1>Last News</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="https://placeimg.com/380/230/nature" alt="">
+                    </div>
+                    <div class="card-desc">
+                        <h3>Heading</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis
+                            voluptas totam</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="https://placeimg.com/380/230/nature" alt="">
+                    </div>
+                    <div class="card-desc">
+                        <h3>Heading</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis
+                            voluptas totam</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- news card section starts from here -->
+
+            <!-- Last Donates Start -->
+            <div class="review">
+                <div class="container-fluid">
+                    <h1>Last Donations</h1>
+                    <div class="row align-items-center review-slider normal-slider">
+                        @foreach ($users as $user)
+
+                        <div class="col-md-6">
+                            <div class="review-slider-item">
+                                <div class="review-img">
+                                    <img src="{{$user->image_url}}" width="100" height="100" alt="Image">
+                                </div>
+                                <div class="review-text">
+                                    <h2>{{$user->name}}</h2>
+                                    <h3>{{$user->email}}</h3>
+                                    <p>
+                                        {{$user->description}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+            <!-- Last Donates End -->
+  <!-- Top Donates Start -->
+  <div class="review">
+    <div class="container-fluid">
+        <h1>Top Donations</h1>
+        <div class="row align-items-center review-slider normal-slider">
+            @foreach ($users as $user)
+            <div class="col-md-6">
+                <div class="review-slider-item">
+                    <div class="review-img">
+                        <img src="{{$user->image_url}}" width="100" height="100" alt="Image">
+                    </div>
+                    <div class="review-text">
+                        <h2>{{$user->name}}</h2>
+                        <h3>{{$user->email}}</h3>
+                        <p>
+                            {{$user->description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+<!-- Top Donates End -->
         <!-- Feature Start-->
         <div class="feature">
             <div class="container-fluid">
@@ -46,30 +132,5 @@
         </div>
         <!-- Feature End-->
 
-        <!-- Review Start -->
-        <div class="review">
-            <div class="container-fluid">
-                <div class="row align-items-center review-slider normal-slider">
-                    @foreach ($users as $user)
-
-                    <div class="col-md-6">
-                        <div class="review-slider-item">
-                            <div class="review-img">
-                                <img src="{{$user->image_url}}" width="100" height="100" alt="Image">
-                            </div>
-                            <div class="review-text">
-                                <h2>{{$user->name}}</h2>
-                                <h3>{{$user->email}}</h3>
-                                <p>
-                                    {{$user->description}}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <!-- Review End -->
 
  @endsection

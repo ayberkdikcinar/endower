@@ -13,7 +13,7 @@ class ProfileController extends Controller
 
     public function viewProfile($username){
 
-        $user=User::where('user_name',$username)->first() ?? abort(403,'Aradağınız sayfa bulunamadı');
+        $user=User::where('user_name',$username)->first() ?? abort(404);
 
         if(Auth::check() && ($user->id==Auth::user()->id))
             return view('back.profile');
@@ -32,14 +32,14 @@ class ProfileController extends Controller
             'name'=>'min:3',
             'image'=>'image|mimes:png,jpg,jpeg|max:300',
             'username'=>'min:3',
-           // 'phone'=>'min:10|max:10'
+            'phone'=>'min:10|max:10|string'
         ]);
         //dd($request->username);die;
         $user=User::findOrFail(Auth::user()->id);
         $user->name=$request->name;
         $user->user_name=$request->username;
         $user->email=$request->email;
-       // $user->phone=$request->phone;
+        $user->phone=$request->phone;
         $user->username_slug=Str::slug($request->username);
 
         if($request->hasFile('image')){
@@ -54,6 +54,7 @@ class ProfileController extends Controller
         return redirect()->route('user.profile',$user->user_name);
 
     }
+
     public function settings(){
         return view('back.profile-settings');
     }
