@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class ProfileSettings extends Model
 {
     public function getUser(){
-        return $this->hasOne(User::Class);
+        return $this->belongsTo(User::Class);
     }
 }
