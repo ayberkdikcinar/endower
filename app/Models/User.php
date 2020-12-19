@@ -7,8 +7,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
 
-
-
     // Actions
     public function addPost($title, $content, $image_url){
         $post = new Post;
@@ -43,9 +41,7 @@ class User extends Authenticatable
 
 
 
-
     // Getters & Relations
-
     public function getPosts(){
         return $this->hasMany('App\Models\Post','user_id','id');
     }
