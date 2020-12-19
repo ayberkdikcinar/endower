@@ -30,3 +30,5 @@ Route::get('/register','AuthController@indexReg')->name('registerpage');
 Route::post('/register-now','AuthController@registerPost')->name('register');
 
 
+
+
