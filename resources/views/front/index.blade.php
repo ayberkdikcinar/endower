@@ -7,30 +7,19 @@
     <div class="container">
         <h1>Last News</h1>
         <div class="row">
+            @foreach ($news as $new)
             <div class="col-md-4">
                 <div class="card-content">
                     <div class="card-img">
-                        <img src="https://placeimg.com/380/230/nature" alt="">
+                        <img src="{{$new->image_url}}" alt="">
                     </div>
                     <div class="card-desc">
-                        <h3>Heading</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis
-                            voluptas totam</p>
+                        <h3>{{$new->title}}</h3>
+                        <p>{{$new->content}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card-content">
-                    <div class="card-img">
-                        <img src="https://placeimg.com/380/230/nature" alt="">
-                    </div>
-                    <div class="card-desc">
-                        <h3>Heading</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis
-                            voluptas totam</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
