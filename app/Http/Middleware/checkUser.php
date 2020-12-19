@@ -17,7 +17,7 @@ class CheckUser
     public function handle($request, Closure $next)
     {
         if(!Auth::check())
-            return redirect()->route('login');
+            return redirect()->route('loginpage');
 
         return $next($request);
     }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donator extends Model
 {
-    public function getDonations(){
-        return $this->hasMany(Donation::class);
+    public function donations(){
+        return $this->hasMany(Donation::class)->get()->all();
     }
 }

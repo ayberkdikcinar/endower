@@ -19,7 +19,7 @@
             <div class="col-md-9">
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
-                        @foreach (Auth::user()->getPosts as $post)
+                        @foreach (Auth::user()->posts as $post)
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -61,7 +61,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (Auth::user()->getPosts as $post)
+                                        @foreach (Auth::user()->posts as $post)
                                         <tr>
                                             <td>{{$post->id}}</td>
                                             <td><img src="{{$post->image_url}}" width="80"></td>

@@ -8,11 +8,11 @@ class Donation extends Model
 {
 
 
-    public function getUser(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function getDonator(){
+    public function donator(){
         return $this->belongsTo(Donator::class);
     }
 }
