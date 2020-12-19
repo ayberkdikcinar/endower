@@ -43,9 +43,7 @@ class ProfileController extends Controller
         $user->username_slug=Str::slug($request->username);
 
         if($request->hasFile('image')){
-            $imagename=Str::slug($request->username).'.'.$request->image->getClientOriginalExtension();
-            $request->image->move(public_path('uploads'),$imagename);
-            $user->image_url='uploads/'.$imagename;
+            $user->image_url=GetImageUrl($request->image, Str::slug($request->username));
         }
 
         $user->save();
