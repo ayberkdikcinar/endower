@@ -17,7 +17,7 @@ class Posts extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('title')->default('title');
-            $table->longText('content')->default('content');
+            $table->longText('content');
             $table->string('image_url')->default('https://cdn0.iconfinder.com/data/icons/pinpoint-notifocation/48/none-512.png');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
