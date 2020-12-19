@@ -22,15 +22,11 @@ class CreateUserAnalyticsTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreignId('top_donator_id');
-            $table->foreign('top_donator_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-
-            $table->double('top_donation');
-            $table->double('total_donation');
-            $table->integer('donator_count');
+            $table->foreignId('top_donator_id')->nullable();
+   
+            $table->double('top_donation')->default(0);
+            $table->double('total_donation')->default(0);
+            $table->integer('donator_count')->default(0);
 
 
             $table->timestamps();
