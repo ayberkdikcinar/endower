@@ -8,11 +8,11 @@ class UserAnalytics extends Model
 {
     
 
-    public function getUser(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function getTopDonator(){
+    public function topDonator(){
         if(!$this->topDonator)
             return null;
 

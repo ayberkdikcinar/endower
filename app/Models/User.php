@@ -42,25 +42,23 @@ class User extends Authenticatable
 
 
     // Getters & Relations
-    public function getPosts(){
-        return $this->hasMany('App\Models\Post','user_id','id');
+    public function posts(){
+        return $this->hasMany(Post::class);
     }
 
-    public function getProfileSettings(){
+    public function profileSettings(){
         return $this->hasOne(ProfileSettings::class);
     }
 
-
-
-    public function getAnalytics(){
+    public function userAnalytics(){
         return $this->hasOne(UserAnalytics::class);
     }
 
-    public function getSocialLinks(){
+    public function socialLinks(){
         return $this->hasMany(SocialLink::class);
     }
 
-    public function getDonations(){
+    public function donations(){
         return $this->hasMany(Donation::class);
     }
 

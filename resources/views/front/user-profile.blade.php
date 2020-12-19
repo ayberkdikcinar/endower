@@ -16,9 +16,9 @@
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
 
-                        @if ($user->getPosts->count()>0)
+                        @if ($user->posts->count()>0)
 
-                        @foreach ($user->getPosts as $post)
+                        @foreach ($user->posts as $post)
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
