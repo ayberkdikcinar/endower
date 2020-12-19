@@ -49,3 +49,5 @@ Route::group(['middleware' => 'checkUser'], function () {
 
 });
 
+// Donation
+Route::post('/donate','DonationController@donate');

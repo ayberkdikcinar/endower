@@ -26,6 +26,8 @@ class User extends Authenticatable
         $donation->is_anonymous=$is_anonymous;
         $donation->comment=$comment;
 
+        $donation->save();
+
         $this->calculateAnalytics($donator->id, $amount);
     }
 
@@ -55,7 +57,7 @@ class User extends Authenticatable
 
         // Calculate numbers
         $analytics->total_donation = $this->donations->sum('amount');
-        $analytics->donator_count = $this->donations->distinct('donator_id')->count();
+        $analytics->donator_count = $this->donations->groupBy('donator_id')->count();
 
         if($amount > $analytics->top_donation){
             $analytics->top_donation=$amount;
