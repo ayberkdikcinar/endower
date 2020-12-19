@@ -10,6 +10,6 @@ class SocialLink extends Model
 
 
     public function getUser(){
-        return $this->belongsTo(User::Class);
+        return $this->belongsTo(User::class);
     }
 }
