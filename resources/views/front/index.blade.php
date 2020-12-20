@@ -11,7 +11,7 @@
             <div class="col-md-4">
                 <div class="card-content">
                     <div class="card-img">
-                        <img src="{{$new->image_url}}" alt="">
+                        <img src="{{$new->image_url}}">
                     </div>
                     <div class="card-desc">
                         <h3>{{$new->title}}</h3>
@@ -85,6 +85,40 @@
     </div>
 </div>
 <!-- Top Donates End -->
+   <!-- Featured Product Start -->
+   <div class="featured-product product">
+    <div class="container-fluid">
+        <div class="section-header">
+            <h1>Featured Product</h1>
+        </div>
+        <div class="row align-items-center product-slider product-slider-4">
+            @foreach ($topUsers as $topUser)
+            <div class="col-lg-3">
+                <div class="product-item">
+                    <div class="product-title">
+                        <a href="#">{{$topUser->user_name}}</a>
+                        <div class="ratting">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="product-image">
+                        <a href="{{route('user.profile',$topUser->user_name)}}">
+                            <img src="{{asset($topUser->image_url)}}" alt="Product Image">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+        </div>
+    </div>
+</div>
+<!-- Featured Product End -->
+
         <!-- Feature Start-->
         <div class="feature">
             <div class="container-fluid">

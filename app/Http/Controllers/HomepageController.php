@@ -13,8 +13,9 @@ class HomepageController extends Controller
         $users=User::all();
         $news=News::orderBy('created_at','DESC')->get();
         $donations[0]=Donation::orderBy('created_at','DESC')->limit(5)->get();
-        $donations[1]=Donation::orderBy('created_at','DESC')->limit(5)->get();
-        return view('front.index', compact('users','news','donations'));
+        $donations[1]=Donation::orderBy('amount','DESC')->limit(5)->get();
+        $topUsers=User::orderBy('popularity','DESC')->limit(5)->get();
+        return view('front.index', compact('users','news','donations','topUsers'));
     }
     public function productPage(){
         return view('front.product');

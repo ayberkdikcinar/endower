@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 class User extends Authenticatable
 {
 
@@ -19,10 +20,17 @@ class User extends Authenticatable
     }
 
     public function addSocialLink($name, $url){
-        $socialLink = new SocialLink;
-        $socialLink->user_id=$this->id;
-        $socialLink->name=$name;
-        $socialLink->url=$url;
+        if($socialLink=SocialLink::where('user_id',Auth::user()->id)->where('name',$name)->first()){
+            $socialLink->user_id=$this->id;
+            $socialLink->name=$name;
+            $socialLink->url=$url;
+        }
+        else{
+            $socialLink = new SocialLink;
+            $socialLink->user_id=$this->id;
+            $socialLink->name=$name;
+            $socialLink->url=$url;
+        }
 
         $socialLink->save();
     }

@@ -19,8 +19,11 @@
         <link href="{{asset('front/')}}/lib/slick/slick.css" rel="stylesheet">
         <link href="{{asset('front/')}}/lib/slick/slick-theme.css" rel="stylesheet">
         <link href="{{asset('front/')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
           <!-- For News -->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+          <!-- For icons for input field -->
+        <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Template Stylesheet -->
         <link href="{{asset('front/')}}/css/style.css" rel="stylesheet">
         @toastr_css

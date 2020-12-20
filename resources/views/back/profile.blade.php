@@ -84,7 +84,7 @@
                     <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
                         <h4>Payment Method</h4>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus. Nulla tristique viverra nisl, sit amet bibendum ante suscipit non. Praesent in faucibus tellus, sed gravida lacus. Vivamus eu diam eros. Aliquam et sapien eget arcu rhoncus scelerisque.
+
                         </p>
                     </div>
                     <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
@@ -105,25 +105,35 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
-                        <h4>Account Details</h4>
-                        <div class="row">
-                        <form action="{{route('update.account')}}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                            <div class="col-md-12">
 
+                        <div class="row">
+                            <div class="col-md-6">
+                            <form action="{{route('update.account')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <h4>Account Details</h4>
                                 <input class="form-control" type="text" placeholder="Name" name="name" value="{{Auth::User()->name}}">
                                 <input class="form-control" type="text" placeholder="User Name"  name="username" value="{{Auth::User()->user_name}}">
                                 <input class="form-control" type="email" placeholder="Email"  name="email" value="{{Auth::User()->email}}">
                                 <input class="form-control" type="tel" placeholder="Phone" name="phone">
                                 <img src="{{asset(Auth::user()->image_url)}}" class="img-fluid img-thumbnail" width="250"/>
                                 <input type="file" name="image" class="form-control">
-                            </div>
-                            <div class="col-md-12">
                                 <button class="btn btn-primary" type="submit">Update Account</button>
                                 <br><br>
+                            </form>
+                            </div>
+                            <div class="col-md-6">
+                            <form action="{{route('update.account.socials')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <h4>Social Links</h4>
+                                <input class="form-control" type="text" placeholder="Facebook" name="facebook" value="">
+                                <input class="form-control" type="text" placeholder="Twitter"  name="twitter" value="">
+                                <input class="form-control" type="text" placeholder="LinkedIn"  name="linkedin" value="">
+                                <input class="form-control" type="text" placeholder="Instagram"  name="instagram" value="">
+                                <input class="form-control" type="text" placeholder="YouTube"  name="youtube" value="">
+                                <button class="btn btn-primary" type="submit">Update Links</button>
+                            </form>
                             </div>
 
-                        </form>
                         </div>
 
                     </div>
