@@ -22,9 +22,27 @@ class PostController extends Controller
 
         $user->addPost($title, $content, $image_url);
 
-        // TODO: Return view or redirect
+        return redirect("/profile/$user->username_slug?action=postcreated&status=1");
     }
     // end create
+
+
+    public function delete($postId){
+        $user=Auth::user();
+
+        $post=$user->posts->find($postId);
+
+        if($post){
+            $post->destroy();
+
+            // Success
+            return redirect("/profile/$user->username_slug?action=postdeleted&status=1");
+        }
+        else{
+            // Fail
+            return redirect("/profile/$user->username_slug?action=postdeleted&status=0");
+        }
+    }
 
 
 }
