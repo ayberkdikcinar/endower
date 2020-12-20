@@ -22,7 +22,26 @@ class SocialLinkController extends Controller
 
         $user->addSocialLink($name, $url);
 
-        // TODO: Return view or redirect
+        return redirect("/profile/$user->username_slug?action=linkcreated&status=1");
     }
     // end create
+
+
+    public function delete($linkId){
+        $user=Auth::user();
+
+        $socialLink=$user->SocialLinks->find($linkId);
+
+        if($socialLink){
+            $socialLink->destroy();
+
+            // Success
+            return redirect("/profile/$user->username_slug?action=linkdeleted&status=1");
+        }
+        else{
+            // Fail
+            return redirect("/profile/$user->username_slug?action=linkdeleted&status=0");
+        }
+    }
+
 }

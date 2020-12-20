@@ -19,6 +19,19 @@ class User extends Authenticatable
         $post->save();
     }
 
+    public function addDonation($donator, $amount, $is_anonymous, $comment){
+        $donation = new Donation;
+        $donation->user_id=$this->id;
+        $donation->donator_id=$donator->id;
+        $donation->amount=$amount;
+        $donation->is_anonymous=$is_anonymous;
+        $donation->comment=$comment;
+
+        $donation->save();
+
+        $this->calculateAnalytics($donator->id, $amount);
+    }
+
     public function addSocialLink($name, $url){
         if($socialLink=SocialLink::where('user_id',Auth::user()->id)->where('name',$name)->first()){
             $socialLink->user_id=$this->id;
@@ -47,6 +60,20 @@ class User extends Authenticatable
         $user_analytics->save();
     }
 
+    public function calculateAnalytics($donator_id=-1, $amount=-1){
+        $analytics=$this->UserAnalytics;
+
+        // Calculate numbers
+        $analytics->total_donation = $this->donations->sum('amount');
+        $analytics->donator_count = $this->donations->groupBy('donator_id')->count();
+
+        if($amount > $analytics->top_donation){
+            $analytics->top_donation=$amount;
+            $analytics->top_donator_id=$donator_id;
+        }
+
+        $analytics->save();
+    }
 
 
     // Getters & Relations

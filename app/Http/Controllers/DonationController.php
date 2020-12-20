@@ -7,6 +7,7 @@ use App\Models\Donator;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+
 use Illuminate\Support\Facades\Validator;
 
 
@@ -55,4 +56,5 @@ class DonationController extends Controller
         return redirect()->back();
 
     }
+
 }
