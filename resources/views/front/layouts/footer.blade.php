@@ -6,8 +6,8 @@
                 <div class="footer-widget">
                     <h2>Get in Touch</h2>
                     <div class="contact-info">
-                        <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
-                        <p><i class="fa fa-envelope"></i>email@example.com</p>
+                        <p><i class="fa fa-map-marker"></i>Kuruçeşme Mh. Deü Kaynaklar Yerleşkesi Pk:35370 Buca/izmir</p>
+                        <p><i class="fa fa-envelope"></i>info@endower.com</p>
                         <p><i class="fa fa-phone"></i>+123-456-7890</p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     </ul>
                 </div>
             </div>
-
+<!--
             <div class="col-lg-3 col-md-6">
                 <div class="footer-widget">
                     <h2>Purchase Info</h2>
@@ -48,7 +48,7 @@
                         <li><a href="#">Return Policy</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="row payment align-items-center">
@@ -80,7 +80,7 @@
             </div>
 
             <div class="col-md-6 template-by">
-                <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
+                <p>Created by AFZ</a></p>
             </div>
         </div>
     </div>

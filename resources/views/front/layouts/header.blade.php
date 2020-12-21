@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <i class="fa fa-envelope"></i>
-                        support@email.com
+                        support@endower.com
                     </div>
                     <div class="col-sm-6">
                         <i class="fa fa-phone-alt"></i>
@@ -59,10 +59,8 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
                             <a href="{{route('index')}}" class="nav-item nav-link @if(Request::segment(1)=="") active @endif">Home</a>
-                            <a href="{{route('product.page')}}" class="nav-item nav-link @if(Request::segment(1)=="product") active @endif">Products</a>
-                            <a href="product-detail.html" class="nav-item nav-link">Product Detail</a>
-                            <a href="cart.html" class="nav-item nav-link">Cart</a>
-                            <a href="checkout.html" class="nav-item nav-link">Checkout</a>
+                            <a href="{{route('index')}}" class="nav-item nav-link @if(Request::segment(1)=="product") active @endif">About Us</a>
+                            <a href="{{route('index')}}" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto">
                             @if (Auth::check())
@@ -113,7 +111,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="{{route('index')}}">
                                 <img src="{{asset('front/')}}/img/logo.png" alt="Logo">
                             </a>
                         </div>
