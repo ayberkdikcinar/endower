@@ -89,7 +89,7 @@
    <div class="featured-product product">
     <div class="container-fluid">
         <div class="section-header">
-            <h1>Featured Product</h1>
+            <h1>Top Users</h1>
         </div>
         <div class="row align-items-center product-slider product-slider-4">
             @foreach ($topUsers as $topUser)
