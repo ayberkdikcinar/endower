@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="review-img">
                                     <h4 style="color:rgb(113, 111, 243)">Amount</h4>
-                                    <h1 style="color:rgb(0, 255, 179)">{{$donate->amount}}</h1>
+                                    <h1 style="color:rgb(0, 255, 179)">{{$donate->amount}}$</h1>
                                 </div>
                                 <div class="review-text">
                                     <h3><b>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{$donate->user->user_name}}</h3>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="review-img">
                         <h4 style="color:rgb(113, 111, 243)">Amount</h4>
-                        <h1 style="color:rgb(0, 255, 179)">{{$donate->amount}}</h1>
+                        <h1 style="color:rgb(0, 255, 179)">{{$donate->amount}}$</h1>
                     </div>
                     <div class="review-text">
                         <h3><b>To:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>{{$donate->user->user_name}}</h3>

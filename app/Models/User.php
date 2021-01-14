@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notifiable;
+
 class User extends Authenticatable
 {
+
+    use Notifiable;
 
     // Actions
     public function addPost($title, $content, $image_url){

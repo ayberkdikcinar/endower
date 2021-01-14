@@ -6,10 +6,9 @@ use App\Models\Donation;
 use App\Models\Donator;
 use Illuminate\Http\Request;
 use App\Models\User;
-
-
+use App\Notifications\DonationReceive;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Carbon;
 
 class DonationController extends Controller
 {
@@ -53,7 +52,17 @@ class DonationController extends Controller
         $user->popularity+=1;
 
         toastr()->success('Thanks for donation!','Success');
+
+        $this->DonationNotification($donation);
+
         return redirect()->back();
+
+    }
+    public function DonationNotification(Donation $donation){
+
+        $when=Carbon::now()->addSeconds(10);
+        $user=User::find($donation->user_id);
+        $user->notify((new DonationReceive($donation))->delay($when));
 
     }
 
