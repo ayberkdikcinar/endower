@@ -23,7 +23,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Create a post</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="" method="POST" enctype="multipart/form-data">
+                                    <form action="{{route('createpost')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <div class="row">
@@ -45,7 +45,7 @@
                                                 <div class="col-md-1"></div>
                                                 <div class="col-md-10">
                                                     Content
-                                                    <textarea id="summernote" name="content" rows="4" class="form-control" required></textarea>
+                                                    <textarea name="content" rows="4" class="form-control" required></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,7 +71,7 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img src="{{$post->image_url}}" width="300">
+                                        <img src="{{asset($post->image_url)}}" width="300">
                                     </div>
                                     <div class="col-md-4">
                                         {{$post->content}}

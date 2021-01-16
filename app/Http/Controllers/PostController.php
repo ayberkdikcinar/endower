@@ -8,41 +8,44 @@ use App\Models\User;
 
 class PostController extends Controller
 {
-    public function create(Request $request){
+    public function create(Request $request)
+    {
 
-        $user=Auth::user();
+       
+        $user = User::where('id', Auth::user()->id)->first();
 
-        $title=$request->input('title');
-        $content=$request->input('content');
-        $image_url="/post.png";
+        
+        $title = $request->input('title');
+        $content = $request->input('content');
+        $image_url = "/post.png";
 
-        if($request->hasFile('image'))
-            $image_url=GetImageUrl($request->image);
+        if ($request->hasFile('image'))
+            $image_url = GetImageUrl($request->image);
 
+        
+        
+        $user->addPost($title, $content, $image_url);
 
-        //$user->addPost($title, $content, $image_url);
-
-        return redirect("/profile/$user->username_slug?action=postcreated&status=1");
+        //return redirect("/profile/$user->username_slug?action=postcreated&status=1");
+        return redirect()->back();
     }
     // end create
 
 
-    public function delete($postId){
-        $user=Auth::user();
+    public function delete($postId)
+    {
+        $user = Auth::user();
 
-        $post=$user->posts->find($postId);
+        $post = $user->posts->find($postId);
 
-        if($post){
+        if ($post) {
             $post->destroy();
 
             // Success
             return redirect("/profile/$user->username_slug?action=postdeleted&status=1");
-        }
-        else{
+        } else {
             // Fail
             return redirect("/profile/$user->username_slug?action=postdeleted&status=0");
         }
     }
-
-
 }

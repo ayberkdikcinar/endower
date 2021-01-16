@@ -41,7 +41,7 @@ Route::post('/register-now','AuthController@registerPost')->name('register');
 Route::group(['middleware' => 'checkUser'], function () {
 
   // Posts
-  Route::post('/profile/posts','PostController@create');
+  Route::post('/profile/posts','PostController@create')->name('createpost');
   Route::post('/profile/posts/{postId}/delete','PostController@delete');
 
   // Social Links
