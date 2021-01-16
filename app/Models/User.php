@@ -84,6 +84,12 @@ class User extends Authenticatable
         $analytics->save();
     }
 
+    public function reversePosts()
+    {
+        $data = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+        return $data;
+    }
+
 
     // Getters & Relations
     public function posts()

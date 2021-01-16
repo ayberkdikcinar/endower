@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                         </div>
-                        @foreach (Auth::user()->posts as $post)
+                        @foreach (Auth::user()->posts->reverse() as $post)
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">{{$post->title}}</h6>

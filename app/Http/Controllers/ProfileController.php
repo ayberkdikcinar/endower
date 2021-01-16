@@ -79,4 +79,9 @@ class ProfileController extends Controller
     {
         return view('back.profile-settings');
     }
+    public function reversePosts(){
+       $posts = Auth::user()->posts;
+        $data=$posts::orderBy('created_at','desc');
+        return $data;
+    }
 }
