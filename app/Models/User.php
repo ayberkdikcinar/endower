@@ -23,6 +23,16 @@ class User extends Authenticatable
 
         $post->save();
     }
+    public function updatePost($title, $content, $image_url,$id)
+    {
+        $post =Post::find($id);
+        $post->user_id = $this->id;
+        $post->title = $title;
+        $post->content = $content;
+        $post->image_url = $image_url;
+
+        $post->save();
+    }
 
     public function addDonation($donator, $amount, $is_anonymous, $comment)
     {
@@ -84,11 +94,6 @@ class User extends Authenticatable
         $analytics->save();
     }
 
-    public function reversePosts()
-    {
-        $data = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
-        return $data;
-    }
 
 
     // Getters & Relations

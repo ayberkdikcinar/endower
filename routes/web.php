@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\HomepageController;
+use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,7 +46,9 @@ Route::group(['middleware' => 'checkUser'], function () {
   // Posts
   Route::post('/profile/posts','PostController@create')->name('createpost');
   Route::post('/profile/posts/{postId}/delete','PostController@delete');
-
+  Route::get('profile/posts/getData','PostController@getData')->name('post.getdata');
+  Route::post('profile/posts/update','PostController@update')->name('post.update');
+  Route::post('profile/posts/delete','PostController@delete')->name('post.delete');
   // Social Links
   Route::post('/profile/social-link','SocialLink@create');
   Route::post('/profile/social-link/{linkId}/delete','SocialLink@delete');

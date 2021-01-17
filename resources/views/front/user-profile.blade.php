@@ -14,19 +14,11 @@
                 <div class="col-md-12" style="background-color: rgb(213, 212, 224)">
                     <label style="color: rgb(34, 8, 129)">Social Links:</label>
                     <div class="contact-info">
-<<<<<<< HEAD
                     @foreach ($user->socialLinks as $social)
                     <div class="social">
                     <a target="_blank" href="https:/{{$social->url}}"><i class="fab fa-{{$social->name}}"></i>&nbsp;&nbsp;&nbsp;{{$social->name}}</a>
                     </div>
                     @endforeach
-=======
-                        @foreach ($user->socialLinks as $social)
-                        <div class="social">
-                            <a href="{{$social->url}}"><i class="fab fa-{{$social->name}}"></i>&nbsp;&nbsp;&nbsp;{{$social->name}}</a>
-                        </div>
-                        @endforeach
->>>>>>> ddee49a5db71746605475d78cc24fa585641cd6c
                     </div>
                     <label></label>
                 </div>
@@ -42,11 +34,18 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <div class="row">
-                                    <div class="col-md-10">
+                                    <div class="col-md-7">
                                         <h6 class="m-0 font-weight-bold text-primary">{{$post->title}}</h6>
                                     </div>
-                                    <div class="col-md-2">
-                                        <h6 class="m-0 font-weight-bold text-primary">{{$post->created_at->diffForHumans()}}</h6>
+                                    <div class="col-md-5">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                            <h6 class="text-primary">Created {{$post->created_at->DiffForHumans()}}
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="text-success">Updated {{$post->updated_at->DiffForHumans()}}</h6>
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div>
