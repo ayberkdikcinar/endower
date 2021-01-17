@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\News;
 use App\Models\Donation;
+use Illuminate\Support\Facades\DB;
+
 class HomepageController extends Controller
 {
     public function index(){
@@ -21,5 +23,31 @@ class HomepageController extends Controller
         return view('front.product');
     }
 
+    public function search(Request $req){
+        $q = $req->input("q");
+
+        // Search in these fields
+        $search_fields = ["user_name","username_slug","description"];
+
+        // Build query
+        $query = DB::table('users');
+        foreach($search_fields as $field) {
+            $query = LikeBuilder($query, $field, $q);
+        }
+
+        $results = $query
+                    // We write joins here instead of calling ->userAnalytics inside the view,
+                    // so we can remove the additional query per result.
+                    // If we call those getters inside view, an additional query will be performed for each result.
+                    // Joins help us avoid that.
+                    //  - FEA
+                    ->join('user_analytics', 'users.id', '=', 'user_analytics.user_id')
+                    ->orderBy('popularity', 'desc')
+                    ->limit(100)
+                    ->get();
+        
+    
+        return view('front.search', compact('results', 'q'));
+    }
 
 }

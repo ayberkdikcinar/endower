@@ -121,8 +121,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
+                            <form action="/search" method="post">
+                                <input type="text" style="outline:0;" name="q" placeholder="Search">
+                                <button><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
