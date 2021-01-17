@@ -68,7 +68,7 @@
                                             <td>{{$post->title}}</td>
                                             <td>{{$post->content}}</td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-primary"><i clas="fa fa-edit">Edit</i></a>
+                                                <a href="{{route('update.post',$post->id)}}" class="btn btn-sm btn-primary"><i clas="fa fa-edit">Edit</i></a>
                                                 <a href="#" class="btn btn-sm btn-danger"><i clas="fa fa-edit">Delete</i></a>
                                             </td>
                                         </tr>

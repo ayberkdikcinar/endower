@@ -21,6 +21,7 @@ Route::post('/updateProfile','ProfileController@updateAccount')->name('update.ac
 
 Route::post('/updateProfile/socials','ProfileController@updateSocials')->name('update.account.socials');
 
+
 Route::get('/profile/{username}','ProfileController@viewProfile')->name('user.profile');
 Route::get('/profile-settings/{username}','ProfileController@settings')->name('user.profile.settings');
 

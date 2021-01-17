@@ -16,7 +16,7 @@
                     <div class="contact-info">
                     @foreach ($user->socialLinks as $social)
                     <div class="social">
-                    <a href="{{$social->url}}"><i class="fab fa-{{$social->name}}"></i>&nbsp;&nbsp;&nbsp;{{$social->name}}</a>
+                    <a target="_blank" href="https:/{{$social->url}}"><i class="fab fa-{{$social->name}}"></i>&nbsp;&nbsp;&nbsp;{{$social->name}}</a>
                     </div>
                     @endforeach
                     </div>
