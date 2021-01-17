@@ -17,6 +17,7 @@ use App\Http\Controllers\PostController;
 //Homepage
 Route::get('/','HomepageController@index')->name('index');
 Route::get('/product','HomepageController@productPage')->name('product.page');
+Route::post('/search','HomepageController@search')->name('search');
 
 ///Profile
 Route::post('/updateProfile','ProfileController@updateAccount')->name('update.account');
