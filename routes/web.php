@@ -43,6 +43,8 @@ Route::group(['middleware' => 'checkUser'], function () {
   // Posts
   Route::post('/profile/posts','PostController@create')->name('createpost');
   Route::post('/profile/posts/{postId}/delete','PostController@delete');
+  Route::get('/profile/posts/edit','PostController@edit')->name('editpost');
+  Route::get('/profile/posts/update','PostController@update')->name('updatepost');
 
   // Social Links
   Route::post('/profile/social-link','SocialLink@create');
@@ -52,3 +54,7 @@ Route::group(['middleware' => 'checkUser'], function () {
 
 // Donation
 Route::post('/donate','DonationController@donate');
+
+Route::get('/product', function(){
+    return view('front.product');
+});

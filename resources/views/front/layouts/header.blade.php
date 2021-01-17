@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <title>@yield('title','Endower')</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="eCommerce HTML Template Free Download" name="keywords">
-        <meta content="eCommerce HTML Template Free Download" name="description">
+        <meta content="Endower" name="keywords">
+        <meta content="Endower" name="description">
 
         <!-- Favicon -->
         <link href="{{asset('front/')}}/img/favicon.ico" rel="icon">
@@ -19,6 +19,7 @@
         <link href="{{asset('front/')}}/lib/slick/slick.css" rel="stylesheet">
         <link href="{{asset('front/')}}/lib/slick/slick-theme.css" rel="stylesheet">
         <link href="{{asset('front/')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="{{asset('front/')}}/vendor/bootstrap.css" rel="stylesheet">
 
           <!-- For News -->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">

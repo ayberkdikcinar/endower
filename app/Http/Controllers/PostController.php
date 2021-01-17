@@ -48,4 +48,21 @@ class PostController extends Controller
             return redirect("/profile/$user->username_slug?action=postdeleted&status=0");
         }
     }
+
+    public function edit(Request $request)
+    {
+        $user = Auth::user();
+        $post = $user->posts->find($request->id);
+        
+        return response()->json($post);
+
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $post = $user->posts->find($request->id);
+
+        
+    }
 }

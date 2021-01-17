@@ -14,6 +14,7 @@
                     <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
                 </div>
             </div>
+
             <div class="col-md-9">
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
@@ -115,12 +116,12 @@
                                             @foreach (Auth::user()->posts as $post)
                                             <tr>
                                                 <td>{{$post->id}}</td>
-                                                <td><img src="{{$post->image_url}}" width="80"></td>
+                                                <td><img src="{{asset($post->image_url)}}" width="80"></td>
                                                 <td>{{$post->title}}</td>
                                                 <td>{{$post->content}}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-primary"><i clas="fa fa-edit">Edit</i></a>
-                                                    <a href="#" class="btn btn-sm btn-danger"><i clas="fa fa-edit">Delete</i></a>
+                                                    <a href="#" post-id="{{$post->id}}" class="btn btn-sm btn-primary edit-click" data-toggle="modal" data-target="#exampleModal"><i clas="fa fa-edit ">Edit</i></a>
+                                                    <a href="#" post-id="{{$post->id}}" class="btn btn-sm btn-danger"><i clas="fa fa-edit">Delete</i></a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -219,7 +220,80 @@
             </div>
         </div>
     </div>
+<!--
+    <div class="modal fade" tabindex="-1" id="exampleModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+-->
+<div class="modal fade" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('updatepost')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label>Category Name:</label>
+                        <input id="postTitle" type="text" class="form-control" name="title" />
+
+                        <input id="postId" type="hidden" class="form-control" name="id" />
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+-->
+
+
 @endsection
+
+<script>
+    $(function() {
+        $('.edit-click').click(function() {
+            id = $(this)[0].getAttribute('post-id');
+            console.log(id);
+            $.ajax({
+                type: 'get',
+                url: '{{route('editpost')}}',
+                data: {id:id},
+                success: function(data) {
+                    console.log(data);
+                    $('#postTitle').val(data.title);
+                    $('#postId').val(data.id);
+                    $('#editModal').modal();
+                }
+            });
+        });
+    })
+</script>
+
 
 <!-- My Account End -->
