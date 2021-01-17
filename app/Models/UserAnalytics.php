@@ -6,17 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserAnalytics extends Model
 {
-    
 
-    public function user(){
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function topDonator(){
-        if(!$this->topDonator)
-            return null;
+    public function topDonator()
+    {
 
-        $donator=Donator::find($this->top_donator_id);
+
+        $donator = Donator::find($this->top_donator_id);
+        if($donator==NULL){
+            $donator=new Donator();
+            $donator->name="No Donator";
+        }
         return $donator;
     }
 }
