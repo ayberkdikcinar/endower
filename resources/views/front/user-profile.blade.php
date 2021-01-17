@@ -34,18 +34,11 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <div class="row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-9">
                                         <h6 class="m-0 font-weight-bold text-primary">{{$post->title}}</h6>
                                     </div>
-                                    <div class="col-md-5">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                            <h6 class="text-primary">Created {{$post->created_at->DiffForHumans()}}
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h6 class="text-success">Updated {{$post->updated_at->DiffForHumans()}}</h6>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-3">
+                                        <h6 class="text-primary text-right">Created {{$post->created_at->DiffForHumans()}}
                                     </div>
 
                                 </div>
@@ -55,9 +48,9 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img src="{{asset($post->image_url)}}" width="300">
+                                        <img src="{{asset($post->image_url)}}" style="max-width: 100%">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         {{$post->content}}
                                     </div>
                                 </div>

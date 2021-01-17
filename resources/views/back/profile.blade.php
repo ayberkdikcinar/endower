@@ -65,19 +65,11 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <div class="row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-9">
                                         <h6 class="m-0 font-weight-bold text-primary">{{$post->title}}</h6>
                                     </div>
-                                    <div class="col-md-5">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                            <h6 class="text-primary">Created {{$post->created_at->DiffForHumans()}}
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h6 class="text-success">Updated {{$post->updated_at->DiffForHumans()}}</h6>
-                                            </div>
-                                        </div>
-
+                                    <div class="col-md-3">
+                                        <h6 class="text-primary text-right">Created {{$post->created_at->DiffForHumans()}}
                                     </div>
 
                                 </div>
@@ -87,12 +79,12 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img src="{{asset($post->image_url)}}" width="300">
+                                        <img src="{{asset($post->image_url)}}" style="max-width: 100%">
                                     </div>
                                     <div class="col-md-5">
                                         {{$post->content}}
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3 text-right">
                                         <a post-id="{{$post->id}}" class="btn btn-sm btn-primary edit-click" data-toggle="modal" data-target="#editModal"><i clas="fa fa-edit">Edit</i></a>
                                         <a post-id="{{$post->id}}" class="btn btn-sm btn-primary delete-click" data-toggle="modal" data-target="#deleteModal"><i clas="fa fa-trash">Delete</i></a>
                                     </div>
@@ -205,14 +197,18 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-          <form action="{{route('post.update')}}" method="POST">
+          <form action="{{route('post.update')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                   <label>Title</label>
                   <input id="title" type="text" class="form-control" name="title">
                   <input id="id" type="hidden" class="form-control" name="id">
               </div>
-              <div class="form-group">
+              <div class="form-group" id="blabla">
+                <label>Image</label>
+                <input type="file" name="image" id="image" class="form-control">
+            </div>
+            <div class="form-group">
                 <label>Content</label>
                 <textarea name="content" id="content" class="form-control" cols="3" rows="3"></textarea>
             </div>
@@ -286,6 +282,8 @@
                     $('#title').val(data.title);
                     $('#content').val(data.content);
                     $('#id').val(data.id);
+                    $('#blabla').append('<img src="/'+data.image_url+'" class="img-fluid img-thumbnail" width="250" />');
+                    console.log(data);
                     $('#editModal').modal();
                 }
             })

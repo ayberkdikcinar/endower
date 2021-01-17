@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Post;
+use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function create(Request $request)
@@ -58,8 +59,18 @@ class PostController extends Controller
 
         $title = $request->title;
         $content = $request->content;
-        $image_url = "/post.png";
+
         $id=$request->input('id');
+
+        $post = Post::find($id);
+        $image_url = $post->image_url;
+
+        if($request->hasFile('image')){
+            $imagename=Str::slug($request->title).'.'.$request->image->getClientOriginalExtension();
+            $request->image->move(public_path('uploads'),$imagename);
+            $image_url='uploads/'.$imagename;
+        }
+
         $user->updatePost($title, $content, $image_url,$id);
 
         return redirect()->back();
