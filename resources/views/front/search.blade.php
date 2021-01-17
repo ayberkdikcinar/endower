@@ -5,7 +5,15 @@
 
 <div class="review">
     <div class="container-fluid mb-5">
-        <h1>Search Results</h1>
+        <h1>Search Results For '{{$q}}'</h1>
+
+       
+        @if (count($results)==0)
+            <div class="alert-danger p-3">
+                No results found.
+            </div>
+        @endif
+
         @foreach ($results as $result)
         
             <div class="row mb-3">

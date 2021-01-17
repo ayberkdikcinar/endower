@@ -42,12 +42,12 @@ class HomepageController extends Controller
                     // Joins help us avoid that.
                     //  - FEA
                     ->join('user_analytics', 'users.id', '=', 'user_analytics.user_id')
-                    ->orderBy('popularity')
+                    ->orderBy('popularity', 'desc')
                     ->limit(100)
                     ->get();
         
     
-        return view('front.search', compact('results'));
+        return view('front.search', compact('results', 'q'));
     }
 
 }
