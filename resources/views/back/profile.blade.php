@@ -156,6 +156,7 @@
                                     <input class="form-control" type="text" placeholder="User Name" name="username" value="{{Auth::User()->user_name}}">
                                     <input class="form-control" type="email" placeholder="Email" name="email" value="{{Auth::User()->email}}">
                                     <input class="form-control" type="tel" placeholder="Phone" name="phone">
+                                    <textarea class="form-control" rows="4" placeholder="Description" name="description" value="{{Auth::User()->description}}"></textarea>
                                     <img src="{{asset(Auth::user()->image_url)}}" class="img-fluid img-thumbnail" width="250" />
                                     <input type="file" name="image" class="form-control">
                                     <button class="btn btn-primary" type="submit">Update Account</button>

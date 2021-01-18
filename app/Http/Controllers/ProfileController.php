@@ -48,6 +48,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->username_slug = Str::slug($request->username);
+        $user->description=$request->description;
 
         if ($request->hasFile('image')) {
             $user->image_url = GetImageUrl($request->image, Str::slug($request->username));
@@ -79,5 +80,5 @@ class ProfileController extends Controller
     {
         return view('back.profile-settings');
     }
-    
+
 }

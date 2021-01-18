@@ -21,7 +21,7 @@ class Users extends Migration
             $table->string('email');
             $table->string('password');
             $table->timestamp('last_login_at');
-            $table->string('description')->default("selam ben");
+            $table->string('description')->default("Standart User");
             $table->string('image_url')->default("uploads/person-placeholder.jpg");
             $table->integer('popularity')->default(0);
             $table->timestamps();
