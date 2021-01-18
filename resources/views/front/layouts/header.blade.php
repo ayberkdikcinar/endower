@@ -65,8 +65,8 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
                             <a href="{{route('index')}}" class="nav-item nav-link @if(Request::segment(1)=="") active @endif">Home</a>
-                            <a href="{{route('index')}}" class="nav-item nav-link @if(Request::segment(1)=="product") active @endif">About Us</a>
-                            <a href="{{route('contact.page')}}" class="nav-item nav-link">Contact</a>
+                            <a href="{{route('aboutus')}}" class="nav-item nav-link @if(Request::segment(1)=="about-us") active @endif">About Us</a>
+                            <a href="{{route('contact.page')}}" class="nav-item nav-link @if(Request::segment(1)=="contact") active @endif">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto">
                             @if (Auth::check())

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
@@ -24,16 +25,36 @@ class HomepageController extends Controller
     public function productPage(){
         return view('front.product');
     }
-
     public function contact(){
         return view('front.contact');
     }
-
-    public function contactSend(Request $request){
-        $contact = new Contact();
-        
+    public function aboutUs(){
+        return view('front.about-us');
     }
+    public function contactSend(Request $request){
+        $validator = Validator::make($request->all(), [
+            'email'=>'required|email',
+            'message'=>'required|min:10',
+            'name'=>'required',
+            'phone'=>'required|min:10|max:10'
+        ]);
 
+        if($validator->fails())
+           return redirect()->route('contact.page')->withErrors($validator)->withInput();
+
+
+            $contact = new Contact;
+            $contact->name=$request->name;
+            $contact->email=$request->email;
+            $contact->phone=$request->phone;
+            $contact->message=$request->message;
+            $contact->created_at=now();
+            $contact->updated_at=now();
+            $contact->save();
+
+        return redirect()->route('contact.page')->with('success','Message has sent. Thank you !');
+
+    }
     public function search(Request $req){
         $q = $req->input("q");
 
@@ -56,8 +77,8 @@ class HomepageController extends Controller
                     ->orderBy('popularity', 'desc')
                     ->limit(100)
                     ->get();
-        
-    
+
+
         return view('front.search', compact('results', 'q'));
     }
 
