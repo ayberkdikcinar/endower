@@ -11,6 +11,13 @@
                     <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-tachometer-alt"></i>Dashboard</a>
                     <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Let's Donate</a>
                 </div>
+
+                <div class="col-md-12" style="background-color: rgb(240, 252, 218)">
+                <label style="color: rgb(34, 8, 129)">Description</label>
+                <div class="contact-info">
+                    <p>{{$user->description}}</p>
+                </div>
+            </div>
                 <div class="col-md-12" style="background-color: rgb(213, 212, 224)">
                     <label style="color: rgb(34, 8, 129)">Social Links:</label>
                     <div class="contact-info">
