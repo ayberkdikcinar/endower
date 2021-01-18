@@ -14,11 +14,19 @@
                 <div class="col-md-12" style="background-color: rgb(213, 212, 224)">
                     <label style="color: rgb(34, 8, 129)">Social Links:</label>
                     <div class="contact-info">
+<<<<<<< HEAD
+                    @foreach ($user->socialLinks as $social)
+                    <div class="social">
+                    <a target="_blank" href="https:/{{$social->url}}"><i class="fab fa-{{$social->name}}"></i>&nbsp;&nbsp;&nbsp;{{$social->name}}</a>
+                    </div>
+                    @endforeach
+=======
                         @foreach ($user->socialLinks as $social)
                         <div class="social">
                             <a href="{{$social->url}}"><i class="fab fa-{{$social->name}}"></i>&nbsp;&nbsp;&nbsp;{{$social->name}}</a>
                         </div>
                         @endforeach
+>>>>>>> ddee49a5db71746605475d78cc24fa585641cd6c
                     </div>
                     <label></label>
                 </div>

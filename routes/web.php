@@ -21,6 +21,7 @@ Route::post('/updateProfile','ProfileController@updateAccount')->name('update.ac
 
 Route::post('/updateProfile/socials','ProfileController@updateSocials')->name('update.account.socials');
 
+
 Route::get('/profile/{username}','ProfileController@viewProfile')->name('user.profile');
 Route::get('/profile-settings/{username}','ProfileController@settings')->name('user.profile.settings');
 
@@ -44,7 +45,7 @@ Route::group(['middleware' => 'checkUser'], function () {
   Route::post('/profile/posts','PostController@create')->name('createpost');
   Route::post('/profile/posts/{postId}/delete','PostController@delete');
   Route::get('/profile/posts/edit','PostController@edit')->name('editpost');
-  Route::get('/profile/posts/update','PostController@update')->name('updatepost');
+  Route::post('/profile/posts/update','PostController@update')->name('updatepost');
 
   // Social Links
   Route::post('/profile/social-link','SocialLink@create');

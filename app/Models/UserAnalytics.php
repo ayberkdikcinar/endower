@@ -15,7 +15,13 @@ class UserAnalytics extends Model
 
     public function topDonator()
     {
+
+
         $donator = Donator::find($this->top_donator_id);
+        if($donator==NULL){
+            $donator=new Donator();
+            $donator->name="No Donator";
+        }
         return $donator;
     }
 }

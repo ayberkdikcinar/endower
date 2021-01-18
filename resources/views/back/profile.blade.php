@@ -8,8 +8,8 @@
             <div class="col-md-3">
                 <img src="{{asset(Auth::user()->image_url)}}" class="img-fluid img-thumbnail" width="423">
                 <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-tachometer-alt"></i>Dashboard</a>
-                    <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Edit Posts</a>
+                    <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-shopping-bag"></i>Dashboard</a>
+                    <!--<a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Edit Posts</a>-->
                     <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Analytics</a>
                     <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Account Details</a>
                 </div>
@@ -71,7 +71,7 @@
                                         <h6 class="m-0 font-weight-bold text-primary">{{$post->title}}</h6>
                                     </div>
                                     <div class="col-md-2">
-                                        <h6 class="m-0 font-weight-bold text-primary">{{$post->created_at->diffForHumans()}}</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">{{$post->created_at->DiffForHumans()}}</h6>
                                     </div>
 
                                 </div>
@@ -83,8 +83,12 @@
                                     <div class="col-md-4">
                                         <img src="{{asset($post->image_url)}}" width="300">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         {{$post->content}}
+                                    </div>
+                                    <div class="col-md-2">
+                                                    <a href="#" post-id="{{$post->id}}" class="btn btn-sm btn-primary edit-click" data-toggle="modal" data-target="#exampleModal"><i clas="fa fa-edit ">Edit</i></a>
+                                                    <a href="#" post-id="{{$post->id}}" class="btn btn-sm btn-danger"><i clas="fa fa-edit">Delete</i></a>
                                     </div>
                                 </div>
 
@@ -92,10 +96,11 @@
                         </div>
                         @endforeach
                     </div>
+                    <!--
                     <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
 
 
-                        <!-- DataTales Example -->
+                        <!-- DataTales Example 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Posts</h6>
@@ -132,7 +137,7 @@
                         </div>
 
 
-                    </div>
+                    </div>-->
                     <!-- start  !-->
 
                     <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
@@ -247,7 +252,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Category</h5>
+                <h5 class="modal-title">Edit Post</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -256,10 +261,10 @@
                 <form action="{{route('updatepost')}}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label>Category Name:</label>
-                        <input id="postTitle" type="text" class="form-control" name="title" />
+                        <label>Post Title:</label>
+                        <input id="title" type="text" class="form-control" name="title" />
 
-                        <input id="postId" type="hidden" class="form-control" name="id" />
+                        <input id="postid" type="hidden" class="form-control" name="postid" />
                     </div>
             </div>
             <div class="modal-footer">
@@ -286,8 +291,8 @@
                 data: {id:id},
                 success: function(data) {
                     console.log(data);
-                    $('#postTitle').val(data.title);
-                    $('#postId').val(data.id);
+                    $('#title').val(data.title);
+                    $('#postid').val(data.id);
                     $('#editModal').modal();
                 }
             });

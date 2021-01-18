@@ -11,10 +11,10 @@ class PostController extends Controller
     public function create(Request $request)
     {
 
-       
+
         $user = User::where('id', Auth::user()->id)->first();
 
-        
+
         $title = $request->input('title');
         $content = $request->input('content');
         $image_url = "/post.png";
@@ -22,8 +22,8 @@ class PostController extends Controller
         if ($request->hasFile('image'))
             $image_url = GetImageUrl($request->image);
 
-        
-        
+
+
         $user->addPost($title, $content, $image_url);
 
         //return redirect("/profile/$user->username_slug?action=postcreated&status=1");
@@ -51,18 +51,23 @@ class PostController extends Controller
 
     public function edit(Request $request)
     {
-        $user = Auth::user();
-        $post = $user->posts->find($request->id);
-        
+        $user = User::where('id', Auth::user()->id)->first();
+        $post = $user->posts->find($request->postid);
+        //dd($post);
+
         return response()->json($post);
 
     }
 
     public function update(Request $request)
     {
-        $user = Auth::user();
-        $post = $user->posts->find($request->id);
+        $user = User::where('id', Auth::user()->id)->first();
+        $post = $user->posts->find($request->postid);
 
+        $post->title = $request->title;
+
+        $post->save();
+        return redirect()->back();
         
     }
 }
