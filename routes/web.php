@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\HomepageController;
+use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,49 +15,52 @@ use app\Http\Controllers\HomepageController;
 |
 */
 //Homepage
-Route::get('/','HomepageController@index')->name('index');
-Route::get('/product','HomepageController@productPage')->name('product.page');
+Route::get('/', 'HomepageController@index')->name('index');
+Route::get('/product', 'HomepageController@productPage')->name('product.page');
+Route::post('/search', 'HomepageController@search')->name('search');
+Route::get('/contact', 'HomepageController@contact')->name('contact.page');
 
 ///Profile
-Route::post('/updateProfile','ProfileController@updateAccount')->name('update.account');
+Route::post('/updateProfile', 'ProfileController@updateAccount')->name('update.account');
 
-Route::post('/updateProfile/socials','ProfileController@updateSocials')->name('update.account.socials');
+Route::post('/updateProfile/socials', 'ProfileController@updateSocials')->name('update.account.socials');
 
 
-Route::get('/profile/{username}','ProfileController@viewProfile')->name('user.profile');
-Route::get('/profile-settings/{username}','ProfileController@settings')->name('user.profile.settings');
+Route::get('/profile/{username}', 'ProfileController@viewProfile')->name('user.profile');
+Route::get('/profile-settings/{username}', 'ProfileController@settings')->name('user.profile.settings');
 
 
 ///Donations
-Route::post('/profile/donation/{userid}','DonationController@donate')->name('donation');
+Route::post('/profile/donation/{userid}', 'DonationController@donate')->name('donation');
 
+// Contacts
+Route::post('/contact/send', 'HomepageController@contactSend')->name('contact.send');
 
 ///Login
-Route::get('/login','AuthController@indexLog')->name('loginpage');
-Route::post('/loginpost','AuthController@loginPost')->name('login.auth');
-Route::get('/logout','AuthController@logout')->name('logout');
+Route::get('/login', 'AuthController@indexLog')->name('loginpage');
+Route::post('/loginpost', 'AuthController@loginPost')->name('login.auth');
+Route::get('/logout', 'AuthController@logout')->name('logout');
 //Register
-Route::get('/register','AuthController@indexReg')->name('registerpage');
-Route::post('/register-now','AuthController@registerPost')->name('register');
+Route::get('/register', 'AuthController@indexReg')->name('registerpage');
+Route::post('/register-now', 'AuthController@registerPost')->name('register');
 
 // Routes that require user authentication
 Route::group(['middleware' => 'checkUser'], function () {
 
   // Posts
-  Route::post('/profile/posts','PostController@create')->name('createpost');
-  Route::post('/profile/posts/{postId}/delete','PostController@delete');
-  Route::get('/profile/posts/edit','PostController@edit')->name('editpost');
-  Route::post('/profile/posts/update','PostController@update')->name('updatepost');
-
+  Route::post('/profile/posts', 'PostController@create')->name('createpost');
+  Route::post('/profile/posts/{postId}/delete', 'PostController@delete');
+  Route::get('profile/posts/getData', 'PostController@getData')->name('post.getdata');
+  Route::post('profile/posts/update', 'PostController@update')->name('post.update');
+  Route::post('profile/posts/delete', 'PostController@delete')->name('post.delete');
   // Social Links
-  Route::post('/profile/social-link','SocialLink@create');
-  Route::post('/profile/social-link/{linkId}/delete','SocialLink@delete');
-
+  Route::post('/profile/social-link', 'SocialLink@create');
+  Route::post('/profile/social-link/{linkId}/delete', 'SocialLink@delete');
 });
 
 // Donation
-Route::post('/donate','DonationController@donate');
+Route::post('/donate', 'DonationController@donate');
 
-Route::get('/product', function(){
-    return view('front.product');
+Route::get('/product', function () {
+  return view('front.product');
 });

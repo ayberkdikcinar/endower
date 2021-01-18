@@ -31,18 +31,17 @@ class DonationController extends Controller
         $user = User::where('user_name', $request->segment(3))->first();
 
         $donation = new Donation();
-        $donator = new Donator();
 
-        $donator->name = $request->donatorname;
-        $donator->phone = $request->phone;
-        $donator->email = $request->email;
-        $donator->card_name = $request->cardname;
-        $donator->card_no = $request->cardnumber;
-        $donator->card_ex_date = $request->month . '/' . $request->year;
-        $donator->card_cvc = $request->cvc;
+        $name = $request->donatorname;
+        $phone = $request->phone;
+        $email = $request->email;
+        $card_name = $request->cardname;
+        $card_no = $request->cardnumber;
+        $card_ex_date = $request->month . '/' . $request->year;
+        $card_cvc = $request->cvc;
 
-        $donator->save();
 
+        $donator= $this->createOrUpdateDonator($name, $email, $phone, $card_name, $card_no, $card_ex_date, $card_cvc);
         $donation->user_id = $user->id;
         $donation->donator_id = $donator->id;
         $donation->amount = $request->amount;
@@ -60,6 +59,26 @@ class DonationController extends Controller
 
         return redirect()->back();
     }
+
+    public function createOrUpdateDonator($name, $email, $phone, $card_name, $card_no, $card_ex_date, $card_cvc) {
+
+        $donator = Donator::where('email', $email)->first();
+
+        if(!$donator)
+          $donator = new Donator;
+
+        $donator->name=$name;
+        $donator->email=$email;
+        $donator->phone=$phone;
+        $donator->card_name=$card_name;
+        $donator->card_no=$card_no;
+        $donator->card_ex_date=$card_ex_date;
+        $donator->card_cvc=$card_cvc;
+
+        $donator->save();
+
+        return $donator;
+      }
     public function DonationNotification(Donation $donation)
     {
 

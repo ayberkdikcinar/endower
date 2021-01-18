@@ -20,13 +20,15 @@
         <link href="{{asset('front/')}}/lib/slick/slick-theme.css" rel="stylesheet">
         <link href="{{asset('front/')}}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
         <link href="{{asset('front/')}}/vendor/bootstrap.css" rel="stylesheet">
-
+        
           <!-- For News -->
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
           <!-- For icons for input field -->
         <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Template Stylesheet -->
         <link href="{{asset('front/')}}/css/style.css" rel="stylesheet">
+        <link href="{{asset('front/')}}/css/main.css" rel="stylesheet">
+        <link href="{{asset('front/')}}/css/util.css" rel="stylesheet">
 
 
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
@@ -64,7 +66,7 @@
                         <div class="navbar-nav mr-auto">
                             <a href="{{route('index')}}" class="nav-item nav-link @if(Request::segment(1)=="") active @endif">Home</a>
                             <a href="{{route('index')}}" class="nav-item nav-link @if(Request::segment(1)=="product") active @endif">About Us</a>
-                            <a href="{{route('index')}}" class="nav-item nav-link">Contact</a>
+                            <a href="{{route('contact.page')}}" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto">
                             @if (Auth::check())
@@ -122,8 +124,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
+                            <form action="/search" method="post">
+                                <input type="text" style="outline:0;" name="q" placeholder="Search">
+                                <button><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>

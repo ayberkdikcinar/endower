@@ -14,19 +14,11 @@
                 <div class="col-md-12" style="background-color: rgb(213, 212, 224)">
                     <label style="color: rgb(34, 8, 129)">Social Links:</label>
                     <div class="contact-info">
-<<<<<<< HEAD
                     @foreach ($user->socialLinks as $social)
                     <div class="social">
                     <a target="_blank" href="https:/{{$social->url}}"><i class="fab fa-{{$social->name}}"></i>&nbsp;&nbsp;&nbsp;{{$social->name}}</a>
                     </div>
                     @endforeach
-=======
-                        @foreach ($user->socialLinks as $social)
-                        <div class="social">
-                            <a href="{{$social->url}}"><i class="fab fa-{{$social->name}}"></i>&nbsp;&nbsp;&nbsp;{{$social->name}}</a>
-                        </div>
-                        @endforeach
->>>>>>> ddee49a5db71746605475d78cc24fa585641cd6c
                     </div>
                     <label></label>
                 </div>
@@ -42,11 +34,11 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <div class="row">
-                                    <div class="col-md-10">
+                                    <div class="col-md-9">
                                         <h6 class="m-0 font-weight-bold text-primary">{{$post->title}}</h6>
                                     </div>
-                                    <div class="col-md-2">
-                                        <h6 class="m-0 font-weight-bold text-primary">{{$post->created_at->diffForHumans()}}</h6>
+                                    <div class="col-md-3">
+                                        <h6 class="text-primary text-right">Created {{$post->created_at->DiffForHumans()}}
                                     </div>
 
                                 </div>
@@ -56,9 +48,9 @@
 
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img src="{{asset($post->image_url)}}" width="300">
+                                        <img src="{{asset($post->image_url)}}" style="max-width: 100%">
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         {{$post->content}}
                                     </div>
                                 </div>

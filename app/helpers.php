@@ -16,4 +16,11 @@ if(!function_exists('GetImageUrl')){
   }
 }
 
+
+if(!function_exists('LikeBuilder')){
+  function likeBuilder($query, $attr, $val) {
+    return $query->orWhere($attr, 'LIKE', '%'.$val.'%');
+  }
+}
+
 ?>

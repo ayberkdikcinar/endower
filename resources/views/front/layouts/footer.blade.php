@@ -111,6 +111,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js%22%3E"></script>
+@yield('js')
 @toastr_js
 @toastr_render
 </body>
