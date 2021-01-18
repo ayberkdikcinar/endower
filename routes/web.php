@@ -18,12 +18,13 @@ use App\Http\Controllers\PostController;
 Route::get('/','HomepageController@index')->name('index');
 Route::get('/product','HomepageController@productPage')->name('product.page');
 Route::post('/search','HomepageController@search')->name('search');
-
+Route::get('/contact','HomepageController@contact')->name('contact.page'); ////
 ///Profile
 Route::post('/updateProfile','ProfileController@updateAccount')->name('update.account');
 
 Route::post('/updateProfile/socials','ProfileController@updateSocials')->name('update.account.socials');
 
+Route::post('/contact/send','HomepageController@contactSend')->name('contact.send'); ////
 
 Route::get('/profile/{username}','ProfileController@viewProfile')->name('user.profile');
 Route::get('/profile-settings/{username}','ProfileController@settings')->name('user.profile.settings');
